@@ -1,8 +1,11 @@
 package Draughts;
 
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;
@@ -60,6 +63,7 @@ public class Board {
 
         public void bind(Circle circle) {
             this.circle = circle;
+
         }
 
         public boolean move(Vector newPos) {
@@ -89,7 +93,8 @@ public class Board {
         private void checkQueen() {
             this.isQueen = (this.position.y == lastHorizontal);
             if (isQueen())
-                circle.setFill((this.color == Colors.WHITE) ? Paint.valueOf("#dddddd") : Paint.valueOf("#99471e"));
+                circle.setFill((this.color == Colors.WHITE) ? new ImagePattern(new Image("file:images/white.png"))
+                        : new ImagePattern(new Image("file:images/brown.png")));
         }
         public boolean moveQueen(Vector newPos) {
             if ((newPos.x + newPos.y) % 2 != 0 && isEmpty(newPos)) {
